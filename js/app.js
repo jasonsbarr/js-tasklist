@@ -1,29 +1,20 @@
-// Define UI vars
-const form = document.getElementById('task-form');
-const taskList = document.querySelector('.collection');
-const clearBtn = document.querySelector('.clear-tasks');
-const filter = document.getElementById('filter');
-const taskInput = document.getElementById('add-task');
-console.log(taskInput);
+/**
+ * Core app code
+ */
 
-const loadEventListeners = function() {
-    // content loaded event
-    window.addEventListener('DOMContentLoaded', showTasks);
+(function(window) {
+    'use strict';
 
-    // add task event
-    form.addEventListener('submit', addTask);
+    let App = new TaskList({
+        form: document.getElementById('task-form'),
+        taskList: document.querySelector('.collection'),
+        clearBtn: document.querySelector('.clear-tasks'),
+        filter: document.getElementById('filter'),
+        taskInput: document.getElementById('add-task')
+    });
 
-    // remove task event
-    taskList.addEventListener('click', removeTask);
-
-    // clear all tasks event
-    clearBtn.addEventListener('click', clearTasks);
-
-    // filter tasks event
-    filter.addEventListener('input', filterTasks);
-
-    taskList.addEventListener('dblclick', editTask);
-};
+    window.App = App;
+})(window);
 
 const addTask = function(e) {
     if (document.getElementById('edit-task') === null) {
@@ -65,7 +56,7 @@ const editTask = function(e) {
         field.style.display = 'block';
         field.style.maxWidth = '75%';
         field.value = oldTask;
-        
+
         editFields.appendChild(field);
         target.replaceChild(editFields, target.childNodes[0]);
 
@@ -215,6 +206,3 @@ const appendTask = function(task) {
     // append li to ul.collection
     taskList.appendChild(li);
 }
-
-// Load all event listeners
-loadEventListeners();
