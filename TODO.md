@@ -1,0 +1,12 @@
+# Task List App TODO
+- Add pagination
+- Implement asynchronous data retrieval
+- Add UI effects
+- Add drivers for additional storage systems
+    - PostgreSQL
+    - MongoDB
+    - HTML5 relational database in browser
+- Use Node to manage dependencies instead of pulling in from CDNs
+- Translate CSS to SCSS
+- Use task runner to concatenate scripts/styles
+- Prioritize items on this list
