@@ -5,19 +5,24 @@
 (function(window) {
     'use strict';
 
+    
     let App = window.App;
+    
+    let saveTasks = function(tasks) {
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+    };
 
     let LocalStore = function(type) {
         this.type = type || 'localStorage';
     };
     
     // Persist task in local storage
-    LocalStore.prototype.persistTask = function(task) {
+    LocalStore.prototype.createTask = function(task) {
         const tasks = this.loadTasks();
 
         tasks.push(task);
 
-        this.saveTasks(tasks);
+        saveTasks(tasks);
     };
 
     // load tasks from local storage
@@ -27,10 +32,6 @@
         }
 
         return [];
-    },
-
-    LocalStore.prototype.saveTasks = function(tasks) {
-        localStorage.setItem('tasks', JSON.stringify(tasks));
     },
 
     // update edited task in UI and persist
@@ -47,7 +48,7 @@
             }
     
             // persist to storage
-            this.saveTasks(tasks);
+            saveTasks(tasks);
         }
     },
 

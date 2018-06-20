@@ -58,8 +58,8 @@
                 // append task to ul.collection
                 this.UI.appendTask(task);
                 
-                // persist task
-                this.Store.persistTask(task);
+                // create task
+                this.Store.createTask(task);
                 
                 // clear input
                 this.taskInput.value = '';
