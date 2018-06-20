@@ -1,0 +1,12 @@
+.collection-item {
+    overflow: visible;
+    clear: both;
+    position: relative;
+}
+
+.delete-item {
+    position: absolute;
+    right: 2%;
+    top: 50%;
+    transform: translateY(-50%);
+}
