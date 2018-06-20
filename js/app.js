@@ -13,6 +13,9 @@
         taskInput: document.getElementById('add-task')
     });
 
+    // Set storage protocol
+    App.Store = App.LocalStorage;
+
     window.App = App;
 })(window);
 
@@ -120,24 +123,6 @@ const filterTasks = function(e) {
     e.preventDefault();
 };
 
-// Persist task in local storage
-const persistTask = function(task) {
-    const tasks = loadTasks();
-
-    tasks.push(task);
-
-    saveTasks(tasks);
-}
-
-// load tasks from local storage
-const loadTasks = function() {
-    if (localStorage.getItem('tasks')) {
-        return JSON.parse(localStorage.getItem('tasks'));
-    }
-
-    return [];
-}
-
 const updateTask = function(newTask, oldTask) {
     if (typeof document.getElementById('edit-task') !== 'undefined') {
         // get tasks
@@ -153,27 +138,6 @@ const updateTask = function(newTask, oldTask) {
         // persist to storage
         saveTasks(tasks);
     }
-}
-
-const saveTasks = function(tasks) {
-    localStorage.setItem('tasks', JSON.stringify(tasks));
-};
-
-// remove single task from local storage
-const deleteTask = function(task) {
-    const tasks = loadTasks();
-
-    if (tasks.indexOf(task) > -1) {
-        tasks.splice(tasks.indexOf(task), 1);
-        localStorage.setItem('tasks', JSON.stringify(tasks));
-    }
-
-    return false;
-}
-
-// Delete all tasks
-const dropTasks = function() {
-    localStorage.removeItem('tasks');
 }
 
 // load and show tasks on page load
