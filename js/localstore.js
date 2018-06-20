@@ -48,8 +48,6 @@
         }
     };
 
-    console.log(LocalStore);
-
     App.LocalStore = LocalStore;
     window.App = App;
 })(window);
